@@ -1,0 +1,5 @@
+- //*[@class="el-radio-group"]/label[1]
+- //*[@class="el-radio-group"]/label[2]
+- //*[@class="el-radio-group"]/label[3]
+test: https://test-edu.codemao.cn/
+staging: https://staging-edu.codemao.cn/
