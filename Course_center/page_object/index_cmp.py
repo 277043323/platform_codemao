@@ -18,7 +18,7 @@ class CMP(BasePage):
         db = shelve.open("cookies")
         # db["cookie"]=cookie
         cookies = db["cookie"]
-        # print(cookies)
+        # # # print(cookies)
         for cookie in cookies:
             if "expiry" in cookie.keys():
                 cookie.pop("expiry")

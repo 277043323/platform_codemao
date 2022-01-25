@@ -13,8 +13,10 @@ class Cmp(BasePage):
     #     self._driver = driver
 
     def cmp_true(self):
+        print(self._driver.window_handles)
 
         self.find(By.XPATH,'//*[@class="go-class-btn"]').click()
+        print(1)
 
         # sleep(5)
         # self._driver.quit()

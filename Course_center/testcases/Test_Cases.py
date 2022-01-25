@@ -1,3 +1,6 @@
+import sys
+
+import yaml
 
 from Course_center.page_object.debug import Index
 from Course_center.page_object.index_cmp import CMP
@@ -7,8 +10,7 @@ import pytest
 import allure
 import pytest_assume
 
-
-
+print(sys.path)
 class TestRegister:
     def setup(self):
         # self.index = Index()
@@ -29,12 +31,26 @@ class TestRegister:
     @allure.step("课程中心")
     def test_index_course(self):
         courseManage = self.cmp_test.goto_cmp().cmp_true().goto_courseManage()
-        print(courseManage)
-        assert "courseManage" in courseManage
+        # print(courseManage)
+        element = courseManage._driver.execute_script("return location.href")
+        assert "courseManage" in element
 
-    # @pytest.mark.parametrize("a",["班级一"])
-    def test_create_class(self):
-        self.cmp_test.goto_cmp().cmp_true().goto_courseManage().grade_ture().create_grade()
+    @pytest.mark.skip
+    @pytest.mark.parametrize("a",yaml.safe_load(open("../config/class.yaml","rb")))
+    def test_create_class(self,a):
+        self.cmp_test.goto_cmp().cmp_true().goto_courseManage().grade_ture().create_grade(a)
+        # print(el)
+
+    @pytest.mark.parametrize("b",yaml.safe_load(open("../config/class.yaml","rb")))
+    def test_add_student(self,b):
+        self.cmp_test.goto_cmp().cmp_true().goto_courseManage().grade_ture().create_grade(b)
+
+
+
+
+
+
+
 
 
 
