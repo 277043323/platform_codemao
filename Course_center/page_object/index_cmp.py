@@ -13,17 +13,17 @@ class CMP(BasePage):
     _base_url = "https://test-edu.codemao.cn/"
 
     def goto_cmp(self):
-        # cookie = self._driver.get_cookies()
+        cookie = self._driver.get_cookies()
         #保存获取的cookie
         db = shelve.open("cookies")
-        # db["cookie"]=cookie
-        cookies = db["cookie"]
-        # # # print(cookies)
-        for cookie in cookies:
-            if "expiry" in cookie.keys():
-                cookie.pop("expiry")
-            self._driver.add_cookie(cookie)
-        self._driver.get("https://test-edu.codemao.cn/")
+        db["cookie"]=cookie
+        # cookies = db["cookie"]
+        # # # # print(cookies)
+        # for cookie in cookies:
+        #     if "expiry" in cookie.keys():
+        #         cookie.pop("expiry")
+        #     self._driver.add_cookie(cookie)
+        # self._driver.get("https://test-edu.codemao.cn/")
         return Cmp(self._driver)
 
 

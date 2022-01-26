@@ -7,12 +7,12 @@ from selenium.webdriver.common.keys import Keys
 
 from Course_center.base.base_page import BasePage
 import time
-
+from Course_center.page_object.Search import Search_OP
 # sys.path.append()
 
 
 class ClassManage(BasePage):
-    def create_grade(self,b):
+    def create_grade(self):
         #方法一：失败
         # self._driver.execute_script("arguments[0].setAttribute('style',arguments[1]);",element,"border:2px solid red")
         # action = ActionChains(self._driver).move_to_element(element).move_by_offset(5,5).click().perform()
@@ -37,12 +37,13 @@ class ClassManage(BasePage):
         to=self.find(By.XPATH,'//*[@class="el-button el-button--primary el-button--small"]')
         self._driver.execute_script("arguments[0].click()", to)
 
-        self.find(By.XPATH,'//*[@class="el-textarea el-input--mini"]/textarea').send_keys(b)
+        self.find(By.XPATH,'//*[@class="el-textarea el-input--mini"]/textarea').send_keys("我的名字")
 
         kk=self.find(By.XPATH,'//*[@class="foot"]//button')
         self._driver.execute_script("arguments[0].click()", kk)
-
         self._driver.refresh()
+
+        return Search_OP(self._driver)
 
 
 
